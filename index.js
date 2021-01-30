@@ -22,7 +22,7 @@ const ScalableImage = props => {
     const [scalableWidth, setScalableWidth] = useState(null);
     const [scalableHeight, setScalableHeight] = useState(null);
     const [errorLoading, setErrorLoading] = useState(false)
-    const [image, setImage] = useState(<ImageComponent />);
+    const [image, setImage] = useState(null);
     const mounted = useRef(false);
 
     useEffect(() => {

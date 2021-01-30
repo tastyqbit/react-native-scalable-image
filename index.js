@@ -21,6 +21,7 @@ const ScalableImage = props => {
 
     const [scalableWidth, setScalableWidth] = useState(null);
     const [scalableHeight, setScalableHeight] = useState(null);
+    const [errorLoading, setErrorLoading] = useState(false)
     const [image, setImage] = useState(<ImageComponent />);
     const mounted = useRef(false);
 
@@ -58,7 +59,10 @@ const ScalableImage = props => {
             Image.getSize(
                 sourceToUse,
                 (width, height) => adjustSize(width, height, props),
-                console.err
+                (err) => {
+                    if(localProps.onError) localProps.onError(err);
+                    console.err(err);
+                }
             );
         }
         else {

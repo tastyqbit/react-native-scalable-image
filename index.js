@@ -14,7 +14,7 @@ import {
 
 const resolveAssetSource = Image.resolveAssetSource;
 
-const ScalableImage = props => {
+const ScalableImage = React.forwardRef((props, ref) => {
     const ImageComponent = props.background
         ? ImageBackground
         : Image;
@@ -40,6 +40,7 @@ const ScalableImage = props => {
     useEffect(() => {
         setImage(
             <ImageComponent
+                ref={ref}
                 {...props}
                 style={[props.style, {
                     width: scalableWidth,
@@ -107,7 +108,7 @@ const ScalableImage = props => {
             </TouchableOpacity>
         );
     }
-};
+});
 
 ScalableImage.propTypes = {
     width: PropTypes.number,
